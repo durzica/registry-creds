@@ -66,16 +66,16 @@ docker-build:
 	@docker buildx create --use --name=multiarch --node=multiarch && \
 	docker buildx build \
 		--output "type=docker,push=false" \
-		--tag ghcr.io/alexellis/registry-creds:$(TAG) \
+		--tag eu.gcr.io/tradeshift-public/registry-creds:$(TAG) \
 		.
 
 .PHONY: docker-publish # Push the docker image to the remote registry
 docker-publish:
 	@docker buildx create --use --name=multiarch --node=multiarch && \
 	docker buildx build \
-		--platform linux/amd64,linux/arm64,linux/arm/v7 \
+		--platform linux/amd64,linux/arm64 \
 		--output "type=image,push=true" \
-		--tag ghcr.io/alexellis/registry-creds:$(TAG) .
+		--tag eu.gcr.io/tradeshift-public/registry-creds:$(TAG) .
 
 # find or download controller-gen
 # download controller-gen if necessary

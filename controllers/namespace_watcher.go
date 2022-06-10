@@ -29,8 +29,7 @@ type NamespaceWatcher struct {
 // +kubebuilder:rbac:groups=core,resources=namespaces,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=core,resources=namespaces/status,verbs=get;update;patch
 
-func (r *NamespaceWatcher) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	ctx := context.Background()
+func (r *NamespaceWatcher) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	r.Log.WithValues("namespace", req.NamespacedName)
 
 	var namespace corev1.Namespace

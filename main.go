@@ -30,7 +30,6 @@ import (
 
 	opsv1 "alexellis/registry-creds/api/v1"
 	"alexellis/registry-creds/controllers"
-	// +kubebuilder:scaffold:imports
 )
 
 var (

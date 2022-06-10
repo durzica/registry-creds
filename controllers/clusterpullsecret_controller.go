@@ -38,8 +38,7 @@ type ClusterPullSecretReconciler struct {
 
 // Reconcile applies a number of ClusterPullSecrets to the default ServiceAccount
 // within various valid namespaces. Namespaces can be ignored as required.
-func (r *ClusterPullSecretReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	ctx := context.Background()
+func (r *ClusterPullSecretReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = r.Log.WithValues("clusterpullsecret", req.NamespacedName)
 
 	var pullSecret v1.ClusterPullSecret

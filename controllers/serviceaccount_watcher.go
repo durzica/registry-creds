@@ -40,8 +40,7 @@ type ServiceAccountWatcher struct {
 // +kubebuilder:rbac:groups=core,resources=serviceaccounts,verbs=get;list;watch;create;update;patch;delete
 // +kubebuilder:rbac:groups=core,resources=serviceaccounts/status,verbs=get;update;patch
 
-func (r *ServiceAccountWatcher) Reconcile(req ctrl.Request) (ctrl.Result, error) {
-	ctx := context.Background()
+func (r *ServiceAccountWatcher) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	r.Log.WithValues("serviceaccount", req.NamespacedName)
 
 	var sa corev1.ServiceAccount
